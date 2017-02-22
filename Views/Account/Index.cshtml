@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome";
+}
+@model IEnumerable<Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole>
+@using System.Security.Claims
+
+
+<h2>PrittBucha</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello @User.Identity.Name</p>
+    
+    @*<form asp-controller="Account" asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Role"></label>
+            <input asp-for="Role" class="form-control">
+            <span asp-validation-for="Role" class="text-danger"></span>
+        </div>
+        <input type="submit" class="btn" value="Create Role" />
+    </form>*@
+    
+    @Html.ActionLink("Create Role", "CreateRole")<br />
+
+    
+
+}
+else
+{
+<p>Please Register or Login</p>
+}
+
+@Html.ActionLink("Login", "Login")<br />
+@Html.ActionLink("Register", "Register")<br />
+
