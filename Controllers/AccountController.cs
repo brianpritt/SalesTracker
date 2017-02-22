@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using SalesTracker.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SalesTracker.Controllers
 {
@@ -15,12 +17,16 @@ namespace SalesTracker.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
+        
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _db = db;
         }
+
+        
+
         public IActionResult Index()
         {
             var roles = _db.Roles.ToList();
@@ -33,7 +39,7 @@ namespace SalesTracker.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateRole(string RoleName)
+        public ActionResult CreateRole(string RoleName)
         {
             try
             {
@@ -49,6 +55,30 @@ namespace SalesTracker.Controllers
             {
                 return View();
             }
+        }
+
+        public IActionResult RoleAddToUser()
+        {
+            var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+            new SelectListItem{ Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = list;
+            return View(list);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RoleAddToUser(string UserName, string RoleName)
+        {
+            
+            ApplicationUser user = _db.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+
+
+            var userResult = await _userManager.AddToRoleAsync(user, RoleName);
+
+            var list = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = list;
+
+            return View("Index");
         }
 
 

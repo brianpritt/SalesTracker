@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ManageUserRoles";
+}
+
+
+<h2>Role Add to User</h2>
+
+@using (Html.BeginForm("RoleAddToUser", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.TextBox("UserName")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, new { style = "display:inline-block;" })
+
+    </p>
+
+
+
+    <input type="submit" class="button" value="Save" />
+}
+
+<hr />
