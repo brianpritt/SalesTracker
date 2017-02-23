@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SalesTracker.Models.Kombucha>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome";
+}
+
+<h3>Add Some Kombucha</h3>
+@Html.ActionLink("Add Kombucha", "Create")
+
+<div id="list-of-brews"></div>
+
+<script type="text/javascript">
+    $.ajax({
+        url: '@Url.Action("BrewList")',
+        type: 'GET',
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function (result) {
+            
+            for (var i = 0; i < result.length; i++) {
+                stringResult = '<div class="row"><div class="col s12 m5"><div class="card-panel teal"><span class="white-text"><h3>' + result[i].komName + '</h3><p>' + result[i].komDescription + '</p><p>' + result[i].komPrice + '</p></span></div></div></div>';
+            }
+            
+            $('#list-of-brews').html(stringResult);
+        }
+    });
+</script>
+
+

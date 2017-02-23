@@ -17,5 +17,13 @@ namespace SalesTracker.Models
         public double KomPrice { get; set; }
         public ICollection<Transaction> Transactions { get; set; }
 
+        public Kombucha(string komName, string komDescription, double komPrice, int komId = 0)
+        {
+            KomName = komName;
+            KomDescription = komDescription;
+            KomPrice = komPrice;
+            KomId = komId;
+        }
+        public Kombucha() { }
     }
 }

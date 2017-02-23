@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome";
+}
+
+<h2>Add a new brew!</h2>
+<form action="NewBrew" class="newbrew">
+    <label for="newName">Name: </label>
+    <input type="text" name="newName" />
+    <label for="newDescription">Description: </label>
+    <input type="text" name="newDescription" />
+    <label for="newPrice">Price: </label>
+    <input type="text" name="newPrice" />
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+<div id="kom-message"></div>
+<script type="text/javascript">
+$('.newbrew').submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+        url: '@Url.Action("NewBrew")',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        success: function (result){
+            var resultMessage = result.KomName + ' has been added to the Database';
+            $('#kom-message').html(resultMessage);
+        }
+    });
+});
+    </script>
