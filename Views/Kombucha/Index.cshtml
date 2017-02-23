@@ -16,14 +16,17 @@
         data: $(this).serialize(),
         dataType: 'json',
         success: function (result) {
-            
+            var stringResult = '';
             for (var i = 0; i < result.length; i++) {
-                stringResult = '<div class="row"><div class="col s12 m5"><div class="card-panel teal"><span class="white-text"><h3>' + result[i].komName + '</h3><p>' + result[i].komDescription + '</p><p>' + result[i].komPrice + '</p></span></div></div></div>';
+                var thisId = result[i].komId;
+                stringResult += '<div class="row"><div class="col s12 m5"><div class="card-panel teal"><span class="white-text"><h3>' + result[i].komName + '</h3><p>' + result[i].komDescription + '</p><p>' + result[i].komPrice + '</p><a href="/Kombucha/Details/' + result[i].komId  + '">Details</a></span></div></div></div>';
             }
-            
+
             $('#list-of-brews').html(stringResult);
         }
     });
 </script>
+
+
 
 

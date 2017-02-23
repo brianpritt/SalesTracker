@@ -44,5 +44,16 @@ namespace SalesTracker.Controllers
             _db.SaveChanges();
             return Json(newKombucha);
         }
+        public IActionResult Details(int id)
+        {
+            var thisBrew = _db.Kombuchas.FirstOrDefault(kombuchas => kombuchas.KomId == id);
+            return View(thisBrew);
+        }
+        public IActionResult Update()
+        {
+            return View();
+        }
+       
+        
     }
 }

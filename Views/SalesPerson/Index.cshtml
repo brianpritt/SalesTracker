@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Welcome";
+}
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Sales"))
+    {
+        <h2>User: @User.Identity.Name</h2>
+        <p>Role: Sales</p>
+    }
+else
+{
+<h4>Please LogIn to view this page.</h4>
+} 
+
+

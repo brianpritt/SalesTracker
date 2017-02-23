@@ -24,7 +24,7 @@ $('.newbrew').submit(function(event) {
         dataType: 'json',
         data: $(this).serialize(),
         success: function (result){
-            var resultMessage = result.KomName + ' has been added to the Database';
+            var resultMessage = result.komName + ' has been added to the Database';
             $('#kom-message').html(resultMessage);
         }
     });

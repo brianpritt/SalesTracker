@@ -44,7 +44,7 @@ namespace SalesTracker
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Kombucha}/{action=Index}/{id?}");
+                    template: "{controller=SalesPerson}/{action=Index}/{id?}");
             });
 
             app.UseStaticFiles();
