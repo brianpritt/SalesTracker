@@ -215,9 +215,15 @@ c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTr
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Controllers\AccountController.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Migrations\20170222172622_Initial.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Migrations\20170222172622_Initial.Designer.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Migrations\20170223002023_SalesTables.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Migrations\20170223002023_SalesTables.Designer.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Migrations\ApplicationDbContextModelSnapshot.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\ApplicationDbContext.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\ApplicationUser.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\Balance.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\Comment.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\Inventory.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\Kombucha.cs
+c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\Models\Transaction.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\ViewModels\LoginViewModel.cs
 c:\users\epicodus\documents\visual studio 2015\Projects\SalesTracker\src\SalesTracker\ViewModels\RegisterViewModel.cs

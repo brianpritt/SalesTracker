@@ -8,6 +8,7 @@ namespace SalesTracker.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
+        public double Commission { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
