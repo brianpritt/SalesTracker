@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using SalesTracker.Models;
 
-namespace SalesTracker.Migrations
+namespace salestracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170223002023_SalesTables")]
-    partial class SalesTables
+    [Migration("20170223212335_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -207,24 +207,10 @@ namespace SalesTracker.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("SalesTracker.Models.Inventory", b =>
-                {
-                    b.Property<int>("QuantityId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Quantitiy");
-
-                    b.HasKey("QuantityId");
-
-                    b.ToTable("Inventories");
-                });
-
             modelBuilder.Entity("SalesTracker.Models.Kombucha", b =>
                 {
                     b.Property<int>("KomId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("InventoryQuantityId");
 
                     b.Property<string>("KomDescription");
 
@@ -232,9 +218,9 @@ namespace SalesTracker.Migrations
 
                     b.Property<double>("KomPrice");
 
-                    b.HasKey("KomId");
+                    b.Property<int>("KomQuantity");
 
-                    b.HasIndex("InventoryQuantityId");
+                    b.HasKey("KomId");
 
                     b.ToTable("Kombuchas");
                 });
@@ -309,13 +295,6 @@ namespace SalesTracker.Migrations
                     b.HasOne("SalesTracker.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("SalesTracker.Models.Kombucha", b =>
-                {
-                    b.HasOne("SalesTracker.Models.Inventory")
-                        .WithMany("Kombuchas")
-                        .HasForeignKey("InventoryQuantityId");
                 });
 
             modelBuilder.Entity("SalesTracker.Models.Transaction", b =>

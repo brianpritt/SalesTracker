@@ -1,13 +1,40 @@
-﻿@{
+﻿@model IEnumerable<SalesTracker.Models.Kombucha>
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Welcome";
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.clickfornew').click(function () { 
+            $.ajax({
+                type: 'GET',
+                datatype: 'html',
+                url: '@Url.Action("Transaction")',
+                success: function (result) {
+                    $('#transaction').html(result);
+            
+                }
+
+            });
+
+        });
+    });
+</script>
+
 @if (User.Identity.IsAuthenticated && User.IsInRole("Sales"))
     {
-        <h2>User: @User.Identity.Name</h2>
-        <p>Role: Sales</p>
-    }
+        <h4>Sales Portal for @User.Identity.Name</h4>
+        <hr/>
+        <h5 class="clickfornew">New Transaction</h5>
+        <div id="transaction"></div>
+        @foreach(var brew in Model)
+        {
+            @Html.DisplayFor(m => brew.KomName)<span> </span>
+            @Html.DisplayFor(m => brew.KomQuantity)<br />
+        }
+}
 else
 {
 <h4>Please LogIn to view this page.</h4>

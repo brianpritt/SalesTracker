@@ -14,7 +14,6 @@ namespace SalesTracker.Models
 
         public DbSet<Balance> Balances { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Kombucha> Kombuchas { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 

@@ -1,0 +1,27 @@
+﻿@model SalesTracker.Models.Kombucha
+<form action ="Transaction" class="addKombucha">
+    <label>Kombucha List</label>
+    @Html.DropDownList("KombuchaList")
+   
+    <input type="submit" value="Finish Sale" class="btn btn-default" />
+</form>
+
+<hr />
+
+<div id="kom-message"></div>
+<script type="text/javascript">
+    console.log($(this).serialize());
+$('.addKombucha').submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+        url: '@Url.Action("Transaction")',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        success: function (result){
+            var resultMessage = result.komName + ' has been added to the Database';
+            $('#kom-message').html(resultMessage);
+        }
+    });
+});
+</script>
